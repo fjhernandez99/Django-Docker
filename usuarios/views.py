@@ -70,6 +70,9 @@ def form_photo(request):
     return render(request, "usuarios/registro.html", context)
 
 
+def bloqueo(request):
+    return render(request, 'usuarios/error.html')
+
 def products(request):
     return HttpResponse('products')
 

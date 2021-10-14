@@ -1,0 +1,13 @@
+body {
+    background: rgb(0, 0, 0);
+}
+.container{
+    padding:5%;
+}
+.lead{
+    background: rgb(255, 255, 255);
+    padding:4%;
+}
+.error-text{
+    color: rgb(113, 203, 255);
+}
