@@ -4,7 +4,7 @@ from ventas.models import Producto, Venta, DetalleVenta
 
 class ProductoAdmin(admin.ModelAdmin):
     fieldsets = ( 
-    ('Detalles del producto:', {'fields': ('categoria', 'nombre', 'precio', 'description', 'inventario' ,)}),
+    ('Detalles del producto:', {'fields': ('categoria', 'nombre', 'precio', 'description', 'inventario' ,'photo')}),
     )
     list_display = ('nombre', 'categoria', 'precio', 'inventario')
 

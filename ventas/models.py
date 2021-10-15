@@ -15,6 +15,7 @@ class Producto(models.Model):
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField(null=True, blank=True)
     inventario = models.IntegerField(default="")
+    photo = models.ImageField(default='images/deafualt1.png')
 
     def __str__(self):
         return f'{self.nombre}'
