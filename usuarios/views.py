@@ -51,7 +51,7 @@ def log(request):
         user = authenticate(request=request,username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/user')
+            return redirect('/home')
             print("Bienvenido")
         else:
             messages.info(request, 'El nombre de usuario "username" o contraseña están incorrectos')
@@ -62,7 +62,7 @@ def log(request):
 
 def lognt(request):
     logout(request)
-    return redirect('/')
+    return redirect('/home')
 
 def form_photo(request):
     context = {}

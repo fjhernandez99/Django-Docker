@@ -1,0 +1,78 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel ="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        LEVEL UP - Registro
+    </title>
+<div class="sidenav">
+         <div class="login-main-text">
+            <img src="{% static 'images/logo2.png' %}" alt="" width="350" height="150" class="d-inline-block align-text-top">
+            <p>
+            <h1>Registro</h1>
+            </p>
+            <p>Ingresa tus datos para crear un usuario. </p>
+         </div>
+</div>
+<div class="main">
+    <div class="col-md-8">
+        <form action="#" method="post" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <p></p>
+            <p></p>
+            <p></p>
+            <div class="form-group">
+            <label>Nombre de Usuario: </label>
+            <input type="text" name="username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+            <label>Nombres: </label>
+            <input type="text" name="first_name" class="form-control" placeholder="Nombres" required>
+            </div>
+            <div class="form-group">
+            <label>Apellidos: </label>
+            <input type="text" name="last_name" class="form-control" placeholder="Apellidos" required>
+            </div>
+            <div class="form-group">
+            <label>Email: </label>
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+            <label>Edad: </label>
+            <input type="number" name="age" class="form-control" placeholder="Edad", min="18" required>
+            </div>
+            <div class="form-group">
+            {{ form.as_p}}
+            <div class="form-group">
+            <label>Contraseña: </label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?><]).{12,}">
+            <br>La contraseña ingresada debe de poseer al menos:
+            <ul>
+                <li> Un total de al menos 12 caracteres. </li>
+                <li> Por lo menos una letra mayúscula o minúscula. </li>
+                <li> Por lo menos un número (0-9)</li>
+                <li> Por lo menos un caracter especial </li>
+            </ul>
+            </div>
+            <button type="submit" class="btn btn-black">Registrar</button>
+            <div>
+                <p></p>
+                </div>
+                <a class="btn btn-outline-info" href="/home" role="button">Regresar</a>
+                <div>
+                   <p></p>
+                  {% for message in messages %}
+                  <label>{{message}}</label>
+                  {% endfor %}
+
+        </div>   
+        </form>
+    </div>
+    
+    </div>
+</div>
