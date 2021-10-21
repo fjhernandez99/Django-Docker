@@ -70,21 +70,21 @@
                     <a href="/registro-admin"><i class="fa fa-fw fa-user-plus"></i>  Agregar un Usuario</a>
                 </li>
                 <li>
-                    <a href="ayuda"><i class="fa fa-fw fa-user"></i> Ver Usuarios</a>
+                    <a href="/ayuda"><i class="fa fa-fw fa-user"></i> Ver Usuarios</a>
                 </li>
                 <li>
-                    <a href="faq"><i class="fa fa-fw fa fa-shopping-cart"></i> Consultar Ventas</a>
+                    <a href="/faq"><i class="fa fa-fw fa fa-shopping-cart"></i> Consultar Ventas</a>
                 </li>
                 <li>
-                    <a href="reporte"><i class="fa fa-fw fa fa-tasks"></i> Generar Reporte</a>
+                    <a href="/reporte"><i class="fa fa-fw fa fa-tasks"></i> Generar Reporte</a>
                 </li>
                 {% elif user.role == "Ventas" %}
                 <li>
-                    <a href="faq"><i class="fa fa-fw fa fa-shopping-cart"></i> Consultar Ventas</a>
+                    <a href="/faq"><i class="fa fa-fw fa fa-shopping-cart"></i> Consultar Ventas</a>
                 </li>
                 {% elif user.role == "Reporte" %}
                 <li>
-                    <a href="reporte"><i class="fa fa-fw fa fa-tasks"></i> Generar Reporte</a>
+                    <a href="/reporte"><i class="fa fa-fw fa fa-tasks"></i> Generar Reporte</a>
                 </li>
                 {% else %}
                 <li>
