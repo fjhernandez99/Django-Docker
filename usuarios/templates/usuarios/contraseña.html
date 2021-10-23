@@ -1,0 +1,47 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel ="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        LEVEL UP - Cambio de Contraseña
+    </title>
+<div class="sidenav">
+         <div class="login-main-text">
+            <img src="{% static 'images/logo2.png' %}" alt="" width="350" height="150" class="d-inline-block align-text-top">
+            <p>
+            <h1>Cambio de Contraseña</h1>
+            </p>
+            <p>Cambia tu contraseña en el siguiente formulario. </p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-lg-6">
+               <form action="#" method="post">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                        {{ form }}
+                        <p></p>
+                        <button type="submit" class="btn btn-black">Cambiar Contraseña</button>
+                        <p></p>
+                        <a class="btn btn-outline-info" href="/home" role="button">Regresar</a>
+                      </form>
+                     <p></p>
+                     
+                    {% for message in messages %}
+                    <label>{{message}}</label>
+                    {% endfor %}
+                </div>   
+               </form>
+            </div>
+         </div>
+      </div>

@@ -7,13 +7,13 @@ class SymbolValidator(object):
     def validate(self, password, user=None):
         if not re.findall('[()[\]{}|\\`~!@#$%^&*_\-+=;:\'",<>./?]', password):
             raise ValidationError(
-                _("The password must contain at least 1 symbol: " +
+                _("La contraseña debe contener por lo menos un símbolo: " +
                   "( ) [ ] { } | \ ` ~ ! @ # $ % ^ & * _ - + = ; : ' \" , < > . / ?"),
                 code='password_no_symbol',
             )
     
     def get_help_text(self):
         return _(
-            "Your password must contain at least 1 symbol: " +
+            "La contraseña debe contener por lo menos un símbolo: " +
             "( ) [ ] { } | \ ` ~ ! @ # $ % ^ & * _ - + = ; : ' \" , < > . / ?"
         )

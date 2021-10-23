@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.http import HttpResponse
 from usuarios.forms import UsuariosForm
 from usuarios.models import Usuario
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from usuarios.forms import UsuariosForm
 
 # Create your views here.
@@ -73,8 +74,25 @@ def form_photo(request):
 def bloqueo(request):
     return render(request, 'usuarios/error.html')
 
+
 def products(request):
     return HttpResponse('products')
 
 def customer(request):
     return HttpResponse('customer')
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.info(request, 'Su nueva contraseña ha sido registrada exitosamente')
+            return redirect('/change-password')
+        else:
+            messages.info(request, 'Hubo un error en el cambio de contraseña, inténtelo nuevamente')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'usuarios/contraseña.html', {
+        'form': form
+    })
