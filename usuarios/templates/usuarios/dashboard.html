@@ -4,11 +4,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel ="stylesheet" type="text/css" href="{% static '/css/dashmain.css' %}">
-<link type="text/javascript" src="{% static '/javascript/main.js' %}">
+<script type="text/javascript" src="{% static '/javascript/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/png" href="{% static 'images/Icono.png' %}">
     <title>
         LEVEL UP - Dashboard
     </title>
@@ -51,14 +54,6 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav" style="background-color: #000000;">
                 <!--<li>
-                    <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> MENU 1 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                    <ul id="submenu-1" class="collapse">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.1</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.2</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.3</a></li>
-                    </ul>
-                </li>
-                <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  MENU 2 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-2" class="collapse">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.1</a></li>
@@ -68,24 +63,45 @@
                 </li>-->
                 {% if user.role == "Admin" %}
                 <li>
-                    <a href="/registro-admin"><i class="fa fa-fw fa-user-plus"></i>  Agregar un Usuario</a>
+                    <a href="#" style="color:white" data-target="#submenu-1"><i class="fa fa-fw fa-star"></i> Admin</a>
+                    <ul id="submenu-1">
+                        <li><a href="/admin"><i class="fa fa-desktop"></i> Interfaz de Admin</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-user-plus"></i> Agregar Usuario</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="/ayuda"><i class="fa fa-fw fa-user"></i> Ver Usuarios</a>
+                    <a href="#" style="color:white" data-target="#submenu-1"><i class="fa fa-fw fa-shopping-cart"></i> Ventas</a>
+                    <ul id="submenu-1">
+                        <li><a href="/admin"><i class="fa fa-fw fa-plus"></i> Agregar Producto</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-search"></i> Consultar Inventario</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="/faq"><i class="fa fa-fw fa fa-shopping-cart"></i> Consultar Ventas</a>
-                </li>
-                <li>
-                    <a href="/reporte"><i class="fa fa-fw fa fa-tasks"></i> Generar Reporte</a>
+                    <a href="#" style="color:white" data-target="#submenu-1"><i class="fa fa-fw fa-shopping-cart"></i> Reportes</a>
+                    <ul id="submenu-1">
+                        <li><a href="/reporte-login"><i class="fa fa-fw fa-sign-in"></i> Login Exitosos</a></li>
+                        <li><a href="/reporte-intentos"><i class="fa fa-fw fa-user-times"></i> Intentos de Login</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-tags"></i> Ventas por Vendedor</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-database"></i> Inventario</a></li>
+                    </ul>
                 </li>
                 {% elif user.role == "Ventas" %}
                 <li>
-                    <a href="/faq"><i class="fa fa-fw fa fa-shopping-cart"></i> Consultar Ventas</a>
+                    <a href="#" style="color:white" data-target="#submenu-1"><i class="fa fa-fw fa-shopping-cart"></i> Ventas</a>
+                    <ul id="submenu-1">
+                        <li><a href="/admin"><i class="fa fa-fw fa-plus"></i> Agregar Producto</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-search"></i> Consultar Inventario</a></li>
+                    </ul>
                 </li>
                 {% elif user.role == "Reporte" %}
                 <li>
-                    <a href="/reporte"><i class="fa fa-fw fa fa-tasks"></i> Generar Reporte</a>
+                    <a href="#" style="color:white" data-target="#submenu-1"><i class="fa fa-fw fa-shopping-cart"></i> Reportes</a>
+                    <ul id="submenu-1">
+                        <li><a href="/reporte-login"><i class="fa fa-fw fa-sign-in"></i> Login Exitosos</a></li>
+                        <li><a href="/reporte-intentos"><i class="fa fa-fw fa-user-times"></i> Intentos de Login</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-tags"></i> Ventas por Vendedor</a></li>
+                        <li><a href="/registro-admin"><i class="fa fa-fw fa-database"></i> Inventario</a></li>
+                    </ul>
                 </li>
                 {% else %}
                 <li>

@@ -56,7 +56,7 @@ def log(request):
             print("Bienvenido")
         else:
             messages.info(request, 'El nombre de usuario "username" o contraseña están incorrectos')
-            return redirect('/')
+            return redirect('/login')
     else:
         return render(request, 'usuarios/login.html')
 

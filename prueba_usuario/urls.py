@@ -19,9 +19,10 @@ from usuarios.views import form_photo, user, products, customer, registroadmin, 
 from django.conf import settings
 from django.conf.urls.static import static
 from interfaz.views import home, registrocliente
+from reportes.views import pdfattempts, pdflogin
 
 urlpatterns = [
-    path('', log),
+    path('login/', log),
     path('admin/', admin.site.urls),
     path('user/', user),
     path('registro-admin/', registroadmin),
@@ -29,6 +30,9 @@ urlpatterns = [
     path('products/', products),
     path('error/', bloqueo),
     path('home/', home),
+    path('', home),
     path('registrarse/', registrocliente),
     path('change-password/', change_password),
+    path('reporte-login/', pdflogin),
+    path('reporte-intentos/', pdfattempts),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
