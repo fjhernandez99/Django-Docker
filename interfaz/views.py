@@ -37,3 +37,6 @@ def registrocliente(request):
     else:
         context['form'] = ClienteForm()
         return render(request, "interfaz/registrarse.html", context)
+
+def ubicaciones(request):
+    return render(request, 'interfaz/ubicaciones.html')
