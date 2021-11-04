@@ -9,27 +9,30 @@
 <head>
    <link rel="icon" type="image/png" href="{% static 'images/Icono.png' %}">
     <title>
-        LEVEL UP - Cambio de Contraseña
+        LEVEL UP - Editar Perfil
     </title>
 <div class="sidenav">
          <div class="login-main-text">
             <img src="{% static 'images/logo2.png' %}" alt="" width="350" height="150" class="d-inline-block align-text-top">
             <p>
-            <h1>Cambio de Contraseña</h1>
+            <h1>Editar Perfil</h1>
             </p>
-            <p>Cambia tu contraseña en el siguiente formulario. </p>
+            <p>Actualiza tus datos en el siguiente formulario. </p>
          </div>
       </div>
       <div class="main">
-         <div class="col-lg-6">
                <form action="#" method="post">
                     {% csrf_token %}
                     <br>
                     <br>
-                    <br>
-                        {{ form }}
+                    <div class="media">
+                        <div class="media-body">
+                          {{ form.as_p }}
+                        </div>
+                        <img src="{{user.photo.url}}" class="ml-3" alt="..." width="150" height="200">
+                      </div>
                         <p></p>
-                        <button type="submit" class="btn btn-black">Cambiar Contraseña</button>
+                        <button type="submit" class="btn btn-black">Actualizar Información</button>
                         <p></p>
                         <a class="btn btn-outline-info" href="/home" role="button">Regresar</a>
                       </form>
@@ -40,25 +43,7 @@
                     {% endfor %}
                 </div>   
                </form>
-                        <div class="col-lg-6">
-               <form action="#" method="post">
-                    {% csrf_token %}
-                    <br>
-                    <br>
-                    <br>
-                        {{ form }}
-                        <p></p>
-                        <button type="submit" class="btn btn-black">Cambiar Contraseña</button>
-                        <p></p>
-                        <a class="btn btn-outline-info" href="/home" role="button">Regresar</a>
-                      </form>
-                     <p></p>
-                     
-                    {% for message in messages %}
-                    <label>{{message}}</label>
-                    {% endfor %}
-                </div>   
-               </form>
+
             </div>
          </div>
       </div>

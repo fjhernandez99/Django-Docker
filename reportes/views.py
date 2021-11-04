@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from reportes.models import Tables, Tables2
+from reportes.models import Tables, Tables2, Tables3
 from django.template import loader
 import pdfkit
 from django.http import HttpResponse
@@ -22,5 +22,14 @@ def pdfattempts(request):
         'all_tables2': all_tables2,
     }
     pdf = render_to_pdf('reportes/reporteattempts.html', context)
+    return HttpResponse(pdf, content_type='application/pdf')
+
+def pdfinventario(request):
+    all_tables3 = Tables3.rows
+    template = loader.get_template('reportes/reporteinventario.html')
+    context = {
+        'all_tables3': all_tables3,
+    }
+    pdf = render_to_pdf('reportes/reporteinventario.html', context)
     return HttpResponse(pdf, content_type='application/pdf')
 

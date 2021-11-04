@@ -18,12 +18,11 @@
     </style>
 </head>
 <h1 style="background-color:rgb(0, 0, 0);  font-size:20px; color:white; text-align:center; padding-top: 20px; padding-bottom: 10px">
-<img src="C:\Users\pj_xe\OneDrive\Documentos\Django-Docker\reportes\static\images\logo2.png" alt="" width="250" height="100" style="background-color:rgb(0, 0, 0); color:white; text-align:center;"><br>
+<img src="https://i.ibb.co/MMVZnj5/logo2.jpg" alt="" width="250" height="100" style="background-color:rgb(0, 0, 0); color:white; text-align:center;"><br>
 Reporte de Ingresos de los Usuarios</h1>
         <table style="width: 100%;">
             <thead>
                 <tr>
-                <th>#</th>
                 <th>Nombre de Usuario</th>
                 <th>Dirección IP</th>
                 <th>Fecha y Hora</th>
@@ -32,7 +31,6 @@ Reporte de Ingresos de los Usuarios</h1>
             <tbody>
                 {% for rows in all_tables %}
                 <tr>
-                <td>{{rows.2}}</td>
                 <td>{{rows.0}}</td>
                 <td>{{rows.1}}</td>
                 <td>{{rows.3}}</td>

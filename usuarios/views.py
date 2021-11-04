@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from usuarios.forms import UsuariosForm
 from usuarios.models import Usuario
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-from usuarios.forms import UsuariosForm
+from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
+from usuarios.forms import UsuariosForm, EditarPerfilForm
 
 # Create your views here.
 def user(request):
@@ -94,5 +94,20 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'usuarios/contraseña.html', {
+        'form': form
+    })
+
+def change_user(request):
+    if request.method == 'POST':
+        form = EditarPerfilForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            messages.info(request, 'Sus cambios fueron realizados exitosamente')
+            return redirect('/change-profile')
+        else:
+            messages.info(request, 'Hubo un error en la actualización de información, inténtelo nuevamente')
+    else:
+        form = EditarPerfilForm(instance=request.user)
+    return render(request, 'usuarios/perfil.html', {
         'form': form
     })

@@ -37,7 +37,7 @@
             </li>            
             <li class="dropdown">
                 {% if user.is_authenticated %}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} - {{user.role}} <b class="fa fa-angle-down"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{user.photo.url}}" alt="" width="20" height="25" > {{user.username}} - {{user.role}} <b class="fa fa-angle-down"></b></a>
                 {% else %}
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Anónimo <b class="fa fa-angle-down"></b></a>
                 {% endif %}    
@@ -45,6 +45,7 @@
                          <!--   <li><a href="#"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
                     <li><a href="#"><i class="fa fa-fw fa-cog"></i> Cambiar Contraseña</a></li>
                     <li class="divider"></li>-->
+                    <li><a href="/change-profile"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
                     <li><a href="/change-password"><i class="fa fa-fw fa-cog"></i> Cambiar Contraseña</a></li>
                     <li><a href="/logout"><i class="fa fa-fw fa-power-off"></i> Salir</a></li>
                 </ul>
@@ -82,7 +83,7 @@
                         <li><a href="/reporte-login"><i class="fa fa-fw fa-sign-in"></i> Login Exitosos</a></li>
                         <li><a href="/reporte-intentos"><i class="fa fa-fw fa-user-times"></i> Intentos de Login</a></li>
                         <li><a href="/registro-admin"><i class="fa fa-fw fa-tags"></i> Ventas por Vendedor</a></li>
-                        <li><a href="/registro-admin"><i class="fa fa-fw fa-database"></i> Inventario</a></li>
+                        <li><a href="/reporte-inventario"><i class="fa fa-fw fa-database"></i> Inventario</a></li>
                     </ul>
                 </li>
                 {% elif user.role == "Ventas" %}
@@ -113,14 +114,13 @@
         <!-- /.navbar-collapse -->
     </nav>
    
-
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     {% if user.is_authenticated %}
-                    <h1>Bienvenido {{ user.first_name }} {{user.last_name}} - {{user.role}}</h1>
+                    <h1>Bienvenido {{ user.first_name }} {{user.last_name}} - {{user.role}} </h1> 
                     {% else %}
                     <h1>Bienvenido Anónimo</h1>                
                     {% endif %} 

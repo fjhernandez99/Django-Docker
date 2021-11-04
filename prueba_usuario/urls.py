@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from usuarios.views import form_photo, user, products, customer, registroadmin, log, lognt, form_photo, bloqueo, change_password
+from usuarios.views import form_photo, user, products, customer, registroadmin, log, lognt, form_photo, bloqueo, change_password, change_user
 from django.conf import settings
 from django.conf.urls.static import static
-from interfaz.views import home, registrocliente, ubicaciones
-from reportes.views import pdfattempts, pdflogin
+from interfaz.views import accesorios, home, registrocliente, ubicaciones, productos, consolas, accesorios, juegos, membresias
+from reportes.views import pdfattempts, pdflogin, pdfinventario
 
 urlpatterns = [
     path('login/', log),
@@ -32,8 +32,16 @@ urlpatterns = [
     path('home/', home),
     path('', home),
     path('registrarse/', registrocliente),
+    path('password/', change_password),    
     path('change-password/', change_password),
+    path('change-profile/', change_user),
     path('reporte-login/', pdflogin),
     path('reporte-intentos/', pdfattempts),
+    path('reporte-inventario/', pdfinventario),
     path('ubicaciones/', ubicaciones),
+    path('productos/', productos),
+    path('productos/consolas/', consolas),
+    path('productos/accesorios/', accesorios),
+    path('productos/juegos/', juegos),
+    path('productos/membresias/', membresias),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

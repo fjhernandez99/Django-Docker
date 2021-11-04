@@ -35,7 +35,7 @@
         </li>            
         <li class="dropdown">
             {% if user.is_authenticated %}
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} - {{user.role}} <b class="fa fa-angle-down"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{user.photo.url}}" alt="" width="20" height="25" > {{user.username}} - {{user.role}} <b class="fa fa-angle-down"></b></a>
             {% else %}
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Anónimo <b class="fa fa-angle-down"></b></a>
             {% endif %}    
@@ -43,6 +43,7 @@
                      <!--   <li><a href="#"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
                 <li><a href="#"><i class="fa fa-fw fa-cog"></i> Cambiar Contraseña</a></li>
                 <li class="divider"></li>-->
+                <li><a href="/change-profile"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
                 <li><a href="/change-password"><i class="fa fa-fw fa-cog"></i> Cambiar Contraseña</a></li>
                 <li><a href="/logout"><i class="fa fa-fw fa-power-off"></i> Salir</a></li>
             </ul>
@@ -88,7 +89,7 @@
                         <li><a href="/reporte-login"><i class="fa fa-fw fa-sign-in"></i> Login Exitosos</a></li>
                         <li><a href="/reporte-intentos"><i class="fa fa-fw fa-user-times"></i> Intentos de Login</a></li>
                         <li><a href="/registro-admin"><i class="fa fa-fw fa-tags"></i> Ventas por Vendedor</a></li>
-                        <li><a href="/registro-admin"><i class="fa fa-fw fa-database"></i> Inventario</a></li>
+                        <li><a href="/reporte-inventario"><i class="fa fa-fw fa-database"></i> Inventario</a></li>
                     </ul>
                 </li>
                 {% elif user.role == "Ventas" %}
@@ -123,6 +124,7 @@
         <section class="container">
             <div class="container-page">				
                 <div class="col-md-6">
+                    <br>
                     <h3 class="dark-grey">Registro de Personal</h3>
                     <form action="#" method="post" enctype = "multipart/form-data">
                         {% csrf_token %}
@@ -175,6 +177,7 @@
 
                 </div>
                 <div class="col-md-6">
+                    <br>
                     <h3 class="dark-grey">Indicaciones Generales</h3>
                     <p>
                         El nombre de usuario "Username" y el correo "Email" <br>

@@ -9,12 +9,21 @@ PAGO_CHOICES = (
     ('cheque', 'Cheque'),
 )
 
+CATEGORIA_CHOICES = (
+    ('consolas', 'Consolas'),
+    ('accesorios', 'Accesorios'),
+    ('juegos', 'Juegos'),
+    ('membresias', 'Membresías'),
+)
+
 class Producto(models.Model):
-    categoria = models.CharField(max_length=50, default="")
+    categoria = models.CharField(max_length=10,choices=CATEGORIA_CHOICES, default='Consolas')
+    compañia = models.CharField(max_length=50, default="")
     nombre = models.CharField(max_length=50, default="")
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField(null=True, blank=True)
-    inventario = models.IntegerField(default="")
+    inventario_pradera = models.PositiveIntegerField(default=0)
+    inventario_roosevelt = models.PositiveIntegerField(default=0)
     photo = models.ImageField(default='images/deafualt1.png')
 
     def __str__(self):

@@ -4,9 +4,9 @@ from ventas.models import Producto, Venta, DetalleVenta
 
 class ProductoAdmin(admin.ModelAdmin):
     fieldsets = ( 
-    ('Detalles del producto:', {'fields': ('categoria', 'nombre', 'precio', 'description', 'inventario' ,'photo')}),
+    ('Detalles del producto:', {'fields': ('categoria', 'compañia', 'nombre', 'precio', 'description', 'inventario_pradera', 'inventario_roosevelt', 'photo')}),
     )
-    list_display = ('nombre', 'categoria', 'precio', 'inventario')
+    list_display = ('nombre','compañia', 'categoria', 'precio', 'inventario_pradera', 'inventario_roosevelt')
 
 class DetalleInLine(admin.TabularInline):
     model = DetalleVenta

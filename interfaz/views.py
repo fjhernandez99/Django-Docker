@@ -4,11 +4,37 @@ from django.http import HttpResponse
 from interfaz.forms import ClienteForm
 from usuarios.models import Usuario
 from django.contrib.auth import authenticate, login, logout
+from ventas.models import Producto
 
 # Create your views here.
 
 def home(request):
     return render(request, 'interfaz/homepage.html')
+
+def consolas(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'interfaz/consolas.html', context)
+
+def accesorios(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'interfaz/accesorios.html', context)
+
+def juegos(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'interfaz/juegos.html', context)
+
+def membresias(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'interfaz/membresia.html', context)
+
+def productos(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'interfaz/consolas.html', context)
 
 def registrocliente(request):
     context = {}
