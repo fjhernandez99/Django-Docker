@@ -1,23 +1,27 @@
-version: "3.9"
+version: "3"
 
 services:
-  db:
-    image: 'postgres:latest'
-    restart: always
-    volumes: 
-      - './data/db:/var/lib/postgresql/data'
+  datos:
+    image: postgres:11
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=datos
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
-  web:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_PASSWORD=paco1999
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+  
+  django_app:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app
-    ports:
-      - '8000:8000'
+      - static:/code/static
+      - .:/code
     depends_on:
-      - db
+      - datos
+  
+volumes:
+  .:
+  postgres_data:
+  static:
+      

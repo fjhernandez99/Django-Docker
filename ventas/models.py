@@ -10,10 +10,10 @@ PAGO_CHOICES = (
 )
 
 CATEGORIA_CHOICES = (
-    ('consolas', 'Consolas'),
-    ('accesorios', 'Accesorios'),
-    ('juegos', 'Juegos'),
-    ('membresias', 'Membresías'),
+    ('Consola','Consola'),
+    ('Accesorio', 'Accesorio'),
+    ('Juegos','Juegos'),
+    ('Membresías','Membresías')
 )
 
 class Producto(models.Model):

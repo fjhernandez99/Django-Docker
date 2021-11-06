@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from interfaz.views import accesorios, home, registrocliente, ubicaciones, productos, consolas, accesorios, juegos, membresias
 from reportes.views import pdfattempts, pdflogin, pdfinventario
+from ventas.views import Listar, registrar_producto, eliminar_productos
 
 urlpatterns = [
     path('login/', log),
@@ -44,4 +45,7 @@ urlpatterns = [
     path('productos/accesorios/', accesorios),
     path('productos/juegos/', juegos),
     path('productos/membresias/', membresias),
+    path('registrar-producto/', registrar_producto),
+    path('lista-producto/', Listar),
+    path('lista-producto/eliminacionProducto/<int:id>', eliminar_productos)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

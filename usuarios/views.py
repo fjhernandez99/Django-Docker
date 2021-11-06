@@ -34,8 +34,9 @@ def registroadmin(request):
         else:
             user = Usuario.objects.create_user(username = username, password = password, email=email, first_name=first_name, last_name=last_name, age=age, role=role, photo=photo)
             user.save();
+            messages.info(request, 'El nuevo usuario ha sido registrado exitosamente')
             print("Usuario registrado")
-            return redirect('/user')
+            return redirect('/registro-admin')
         
 
 
