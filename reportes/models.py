@@ -22,3 +22,17 @@ class Tables3(models.Model):
     # """SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='public'"""
     cur.execute("SELECT \"nombre\", \"categoria\", \"compañia\", \"precio\", \"inventario_pradera\", \"inventario_roosevelt\" FROM \"ventas_producto\";")
     rows = cur.fetchall()
+
+class Tables4(models.Model):
+    conn = psycopg2.connect("dbname='datos' user='postgres' host='localhost' password='paco1999'")
+    cur = conn.cursor()
+    # """SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='public'"""
+    cur.execute("SELECT \"cliente\", \"nit\", \"direccion\", \"sucursal\", \"vendedor\", \"total\", \"forma_pago\", \"recepcion\", \"entrega\" FROM \"ventas_venta\";")
+    rows = cur.fetchall()
+
+class Tables5(models.Model):
+    conn = psycopg2.connect("dbname='datos' user='postgres' host='localhost' password='paco1999'")
+    cur = conn.cursor()
+    # """SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='public'"""
+    cur.execute("SELECT \"cliente\", \"producto\" FROM \"ventas_carrito\";")
+    rows = cur.fetchall()

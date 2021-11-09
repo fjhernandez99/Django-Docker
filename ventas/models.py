@@ -3,10 +3,10 @@ from usuarios.models import Usuario
 # Create your models here.
 
 PAGO_CHOICES = (
-    ('debito', 'Tarjeta de Débito'),
-    ('credito', 'Tarjeta de Crédito'),
-    ('efectivo', 'Efectivo'),
-    ('cheque', 'Cheque'),
+    ('Debito', 'Tarjeta de Débito'),
+    ('Credito', 'Tarjeta de Crédito'),
+    ('Efectivo', 'Efectivo'),
+    ('Cheque', 'Cheque'),
 )
 
 CATEGORIA_CHOICES = (
@@ -29,15 +29,36 @@ class Producto(models.Model):
     def __str__(self):
         return f'{self.nombre}'
 
+class ProductoVenta(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default = 1)
+    precio = models.DecimalField(max_digits=6, decimal_places=2, default = 0)
+
+class Carrito(models.Model):
+    cliente = models.CharField(max_length=50, default="")
+    producto = models.CharField(max_length=50, default="")
+    cantidad = models.PositiveIntegerField(default = 1)
+    total = models.PositiveIntegerField(default = 1)
+    precio = models.DecimalField(max_digits=6, decimal_places=2, default = 0)
+    photo = models.ImageField(default='images/deafualt1.png')
+
+    def __str__(self):
+        return f'{self.cliente}'
+
 class Venta(models.Model):
     cliente = models.CharField(max_length=50, default="")
+    nit = models.CharField(max_length=10, default="")
+    direccion = models.CharField(max_length=50, default="")
+    sucursal = models.CharField(max_length=50, default="")
+    vendedor = models.CharField(max_length=50, default="")
     total = models.DecimalField(max_digits=6, decimal_places=2)
     forma_pago = models.CharField(max_length=10,choices=PAGO_CHOICES, default='efectivo')
-    cobro = models.DecimalField(max_digits=6, decimal_places=2)
-    vuelto = models.DecimalField(max_digits=6, decimal_places=2)
-    recepcion = models.DateTimeField()
+    recepcion = models.DateTimeField(auto_now_add=True)
     entrega = models.DateTimeField()
-    #productos = models.ManyToManyField(Producto, through='DetalleVenta')
+
+    def productos_carrito(self):
+        return self.productos.all()
+
 
 class DetalleVenta(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE)

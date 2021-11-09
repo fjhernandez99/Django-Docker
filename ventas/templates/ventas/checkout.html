@@ -1,0 +1,81 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel ="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="{% static 'images/Icono.png' %}">
+    <title>
+        LEVEL UP - Checkout
+    </title>
+<div class="sidenav">
+         <div class="login-main-text">
+            <img src="{% static 'images/logo2.png' %}" alt="" width="350" height="150" class="d-inline-block align-text-top">
+            <p>
+            <h1>Checkout</h1>
+            </p>
+            <p>Procesa tu orden para recoger en tienda. </p>
+         </div>
+</div>
+<div class="main">
+    <div class="col-md-8">
+        <form action="#" method="post" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <p></p>
+            <p></p>
+            <p></p>
+            {%if user.is_authenticated%}
+            <label>Cliente: {{user.username}}</label>
+            {%endif%}
+            <div class="form-group">
+                <label>Nombre de Facturación: </label>
+                <input type="text" name="cliente" class="form-control" placeholder="Nombre de Facturación" required>
+            </div>
+            <div class="form-group">
+                <label>NIT: </label>
+                <input type="text" name="nit" class="form-control" placeholder="NIT" required>
+            </div>
+            <div class="form-group">
+                <label>Dirección: </label>
+                <input type="text" name="direccion" class="form-control" placeholder="Dirección" required>
+            </div>
+            <label>Total: Q{{total_carrito}}</label><br>
+            <label>Forma de Pago: </label>
+            <div class="form-group">
+                <select class="form-control" name="pago" id="exampleFormControlSelect1">
+                  <option name="consola">Debito</option>
+                  <option name="accesorios">Credito</option>
+                  <option name="juegos">Efectivo</option>
+                  <option name="membresias">Cheque</option>
+                </select>
+            </div>
+            <label>Sucursal: </label>
+            <div class="form-group">
+                <select class="form-control" name="sucursal" id="exampleFormControlSelect1">
+                  <option name="consola">Pradera Concepción</option>
+                  <option name="accesorios">Peri-Roosevelt</option>
+                </select>
+            </div>
+            <div>
+            <label>Fecha de entrega: {{entrega}}</label><br>
+            </div>
+            <button type="submit" class="btn btn-black">Procesar</button>
+            <div>
+                <p></p>
+                </div>
+                <a class="btn btn-outline-info" href="/home" role="button">Regresar</a>
+                <div>
+                   <p></p>
+                  {% for message in messages %}
+                  <label>{{message}}</label>
+                  {% endfor %}
+
+        </div>   
+        </form>
+    </div>
+    
+    </div>
+</div>

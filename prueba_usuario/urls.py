@@ -18,9 +18,9 @@ from django.urls import path
 from usuarios.views import form_photo, user, products, customer, registroadmin, log, lognt, form_photo, bloqueo, change_password, change_user
 from django.conf import settings
 from django.conf.urls.static import static
-from interfaz.views import accesorios, home, registrocliente, ubicaciones, productos, consolas, accesorios, juegos, membresias
-from reportes.views import pdfattempts, pdflogin, pdfinventario
-from ventas.views import Listar, registrar_producto, eliminar_productos
+from interfaz.views import accesorios, home, registrocliente, ubicaciones, productos, consolas, accesorios, juegos, membresias, carrito
+from reportes.views import pdfattempts, pdflogin, pdfinventario, pdfventas
+from ventas.views import Listar, Listarcarrito, checkout, registrar_producto, eliminar_productos, agregar_carrito, Listarcarrito, eliminar_carrito, checkout
 
 urlpatterns = [
     path('login/', log),
@@ -47,5 +47,11 @@ urlpatterns = [
     path('productos/membresias/', membresias),
     path('registrar-producto/', registrar_producto),
     path('lista-producto/', Listar),
-    path('lista-producto/eliminacionProducto/<int:id>', eliminar_productos)
+    path('lista-producto/eliminacionProducto/<int:id>', eliminar_productos),
+    path('carrito/eliminacionProducto/<int:id>', eliminar_carrito),
+    #path('carrito/actualizarProducto/<int:id>', cantidad_actualizada),
+    path('carrito/', Listarcarrito),
+    path('<slug:username>/producto/<int:id>', agregar_carrito),
+    path('checkout/', checkout),
+    path('reporte-ventas/', pdfventas),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

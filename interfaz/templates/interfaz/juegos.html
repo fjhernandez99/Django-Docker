@@ -20,7 +20,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="{% static 'images/Icono.png' %}">
-        <title>LEVEL UP - Consolas</title>
+        <title>LEVEL UP - Juegos</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -72,7 +72,7 @@
         {% if user.is_authenticated %}
         <i class="fa fa-fw fa-user  p-2" style="color:rgb(0, 195, 255)"></i><a class="nav-link p-2" style="color:rgb(0, 195, 255)"> Bienvenido {{ user.username }}</a> 
         <i class="fa fa-fw fa-cog p-2" style="color:rgb(153, 153, 153)"></i><a class="nav-link p-2" style="color:rgb(153, 153, 153)" href="/change-profile"> Editar Perfil</a>
-        <i class="fa fa-fw fa-shopping-cart p-2" style="color:rgb(153, 153, 153)"></i><a class="nav-link p-2" style="color:rgb(153, 153, 153)" href="/change-profile"> Carrito</a>
+        <i class="fa fa-fw fa-shopping-cart p-2" style="color:rgb(153, 153, 153)"></i><a class="nav-link p-2" style="color:rgb(153, 153, 153)" href="/carrito"> Carrito</a>
         <i class="fa fa-fw fa-user-times p-2" style="color:rgb(255, 0, 140)"> </i><a class="nav-link p-2" style="color:rgb(255, 0, 140)" href="/logout"> Logout </a>
 
         {% else %}
@@ -102,7 +102,11 @@
                     <a><h3 style = "color:black" class="card-title display-6">{{producto.nombre}}</h3></a>
                     <h6>Q{{producto.precio|floatformat:2}}</h6>
                     {%if producto.inventario_pradera != 0 or  producto.inventario_roosevelt != 0%}
-                    <a class="btn btn-dark my-2" href="#" role="button">Agregar al carrito</a> 
+                      {% if user.is_authenticated %}
+                    <a class="btn btn-dark my-2" href="/{{ user.username }}/producto/{{ producto.id }}" role="button">Agregar al carrito</a> 
+                      {%else%}
+                      <a class="btn btn-dark my-2" href="/login" role="button">Agregar al carrito</a> 
+                      {% endif %}
                     {% else %}
                     <a class="btn my-2" style = "background-color:red; color:white">Producto Agotado</a>
                     {% endif %} 
